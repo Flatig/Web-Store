@@ -1,0 +1,15 @@
+{% extends "base_account.html" %}
+
+{% block content %}
+<div class="heading">
+   <h2>Registration</h2>
+</div>
+<h3>Create an account</h3>
+<p>Please, register using the following form:</p>
+<form method="post" enctype="multipart/form-data">
+    {{ user_form.as_p }}
+    {% csrf_token %}
+    <button type="submit">Registration</button>
+    <button type="button" onclick="window.location.href='{% url 'account_menu' %}'">Cancel</button>
+</form>
+{% endblock %}

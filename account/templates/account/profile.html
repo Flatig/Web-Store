@@ -1,0 +1,25 @@
+{% extends "base_account.html" %}
+
+{% block content %}
+<h2>Profile</h2>
+{% if user.is_authenticated %}
+    <div class="messages">
+        {% for message in messages %}
+        <h3>{{ message }}</h3>
+        {% endfor %}
+    </div>
+    {% endif %}
+<p>Username: {{ user.username }}</p>
+<p>Email: {{ user.email }}</p>
+<p>Date of Birth: {{ user.profile.date_of_birth|default:"Not provided" }}</p>
+{% if user.profile.photo %}
+<img src="{{ user.profile.photo.url }}" alt="Profile photo" style="width: 200px; height: 150px; border-radius: 20px;">
+{% else %}
+<p>No profile photo available.</p>
+{% endif %}
+<a>Cart</a>
+<a>Notifications</a>
+<a href="{% url 'edit' username=user.username %}">Edit</a>
+<a href="{% url 'password_change' %}">Change password</a>
+<button type="button" onclick="window.location.href='{% url 'logout' %}'">Logout</button>
+{% endblock %}

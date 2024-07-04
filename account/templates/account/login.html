@@ -1,0 +1,20 @@
+{% extends "base_account.html" %}
+
+{% block content %}
+<h2>Login</h2>
+<div class="messages">
+    {% for message in messages %}
+    <h3>{{ message }}</h3>
+    {% endfor %}
+</div>
+<p>Please, use the following form to log-in:</p>
+<form method="post">
+    {{ form.as_p }}
+    <button type="submit">Log in</button>
+    <button type="button" onclick="window.location.href='{% url 'account_menu' %}'">Cancel</button>
+    {% csrf_token %}
+</form>
+<h4>Forgot your password? To reset your password
+    <a href="{% url 'password_reset' %}">click here.</a>
+</h4>
+{% endblock %}

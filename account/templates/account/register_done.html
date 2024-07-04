@@ -1,0 +1,12 @@
+{% extends "base_account.html" %}
+
+{% block content %}
+<h2>Registration</h2>
+<h3>Welcome {{ new_user.username }}!</h3>
+<p>
+    Your account has been successfully created.
+    Now you can <a href="{% url 'login' %}">log in</a>
+    or
+    return to main account menu <a href="{% url 'account_menu' %}">Click here.</a>
+</p>
+{% endblock %}
